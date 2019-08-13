@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block title %} Edit Ficha {% endblock %}
+
+{% block content %}
+
+<!--FORM NEW FICHA-->
+<div class="container">
+&nbsp
+    <form action="/updateficha">
+
+
+         <div class="form-group row">
+
+    <div class="col-sm-12">
+         <div class="form-group">
+      <input type="text" name="namepj" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NOMBRE DEL PERSONAJE">
+             </div>
+    </div>
+         </div>
+
+
+        <div class="form-group row">
+
+    <div class="col-sm-4">
+
+              <div class="form-group">
+                  <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                  </div>
+    </div>
+
+
+
+   <div class="col-sm-4">
+        <div class="form-group">
+      <input type="email" name="edad" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EDAD">
+            </div>
+         <div class="form-group">
+             <input type="email" name="nacionalidad" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NACIONALIDAD">
+        </div>
+             <div class="form-group">
+            <input type="email" name="raza" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="RAZA">
+        </div>
+                 <div class="form-group">
+            <input type="email" name="grupo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="GRUPO">
+                     </div>
+    </div>
+
+
+             <div class="col-sm-4">
+       <div class="form-group">
+      <input type="email" name="r" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="RAZA">
+            </div>
+         <div class="form-group">
+             <input type="email" name="os" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ORIENTACION SEXUAL">
+        </div>
+             <div class="form-group">
+            <input type="email" name="g" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="GRUPO">
+        </div>
+                 <div class="form-group">
+            <input type="email" name="pb" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="PLAYED BY">
+                     </div>
+    </div>
+
+
+      </div>
+
+
+<div class="row">
+      <!--FISICO-->
+     <div class="form-group col-sm-6">
+
+      <textarea class="form-control" name="fisico" id="exampleTextarea" placeholder="DESCRIPCION FISICA DE TU PERSONAJE" rows="6"></textarea>
+    </div>
+
+
+      <!--PSICOLOGIA-->
+    <div class="form-group col-sm-6">
+
+      <textarea class="form-control" name="psicologia" id="exampleTextarea" placeholder="DESCRIPCION PSIGOLOGICA DE TU PERSONAJE" rows="6"></textarea>
+    </div>
+   </div>
+
+
+
+      <!--HISTORIA-->
+    <div class="form-group row-sm-12">
+      <label for="exampleTextarea">HISTORIA</label>
+      <textarea class="form-control" name="historia" id="exampleTextarea" rows="3" placeholder="HISTORIA DE TU PERSONAJE (MINIMO 10 LINEAS)"></textarea>
+    </div>
+
+
+
+ <div class="form-group row">
+    <!--Character rol picture-->
+    <div class="form-group">
+      <label for="exampleInputFile">Imagen del personaje</label>
+      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
+
+ </div>
+
+ <div class="form-group row center">
+    <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+ </div>
+
+    </form>
+</div>
+{% endblock %}

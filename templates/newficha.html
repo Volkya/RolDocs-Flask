@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% from "_macro.html" import newficha %}
+
+{% block title %} New ficha {% endblock %}
+
+{% block content %}
+
+<!--FORM NEW FICHA-->
+<div class="container">
+&nbsp
+    <form action="/newFicha">
+
+
+         <div class="form-group row">
+
+    <div class="col-sm-12">
+         <div class="form-group">
+     {{ newficha(form.pjname, class='form-control', placeholder="Inserta el nombre completo de tu personaje aqui") }}
+             </div>
+    </div>
+         </div>
+
+
+        <div class="form-group row">
+
+    <div class="col-sm-4">
+
+              <div class="form-group">
+                  <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+
+                  </div>
+    </div>
+
+
+
+   <div class="col-sm-4">
+        <div class="form-group">
+            {{ newficha(form.edad, class='form-control', placeholder="La edad de tu personaje") }}
+                 </div>
+         <div class="form-group">
+             {{ newficha(form.nacionalidad, class='form-control', placeholder="La nacionalidad de tu personaje") }}
+        </div>
+             <div class="form-group">
+            {{ newficha(form.raza, class='form-control', placeholder="La raza de tu personaje") }}
+        </div>
+                 <div class="form-group">
+            {{ newficha(form.grupo, class='form-control', placeholder="EL grupo de tu personaje") }}
+                     </div>
+    </div>
+
+
+             <div class="col-sm-4">
+       <div class="form-group">
+      <input type="email" name="r" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="RAZA">
+            </div>
+         <div class="form-group">
+              {{ newficha(form.orientacion, class='form-control', placeholder="EL grupo de tu personaje") }}
+        </div>
+             <div class="form-group">
+            <input type="email" name="g" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="GRUPO">
+        </div>
+                 <div class="form-group">
+            {{ newficha(form.pb, class='form-control', placeholder="EL grupo de tu personaje") }}
+                     </div>
+    </div>
+
+
+      </div>
+
+
+<div class="row">
+      <!--FISICO-->
+     <div class="form-group col-sm-6">
+{{ newficha(form.fisico, class='form-control', rows='10',cols='100', placeholder="Breve descripción del fisico de tu personaje") }}
+    </div>
+
+
+      <!--PSICOLOGIA-->
+    <div class="form-group col-sm-6">
+{{ newficha(form.psico, class='form-control', rows='10',cols='100', placeholder="Breve descripcion del aspecto psicologico de tu personaje") }}
+        </div>
+   </div>
+
+
+
+      <!--HISTORIA-->
+    <div class="form-group row-sm-12">
+     {{ newficha(form.historia, class='form-control', rows='15',cols='100', placeholder="Cuentanos tu historia! eres todo un personaje") }}
+         </div>
+
+
+    <!--Character rol picture-->
+        <div class="form-group row-sm-12">
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile02">
+        <label class="custom-file-label" for="inputGroupFile02">Imagen del spersonaje</label>
+      </div>
+    </div>
+        </div>
+
+ <div class="form-group row center">
+    <button type="submit" class="btn btn-primary">CREAR</button>
+ </div>
+
+    </form>
+</div>
+{% endblock %}

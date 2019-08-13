@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% from "_macro.html" import login %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+&nbsp
+
+    <div class="container text-center">
+<div class="row">
+    <div class="col-4">
+
+            <form name="sendLogin" id="loginForm" method="POST">
+
+    </div>
+    <div class="col-4">
+<form>
+
+
+ <div class="form-group">
+     {{ login(form.email, class='form-control', placeholder="Ingrese su email") }}
+    </div>
+
+
+        <div class="form-group">
+            {{ login(form.password, class='form-control', placeholder="Ingrese su contraseña") }}
+    </div>
+
+
+     <div class="form-group">
+    <button type="submit" class="btn btn-primary">CONECTARSE</button>
+    </div>
+
+</form>
+
+        </div>
+    <div class="col-4">{{ title }}</div>
+</div>
+
+    </div>
+{% endblock %}
