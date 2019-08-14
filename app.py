@@ -1,11 +1,10 @@
 from flask import Flask, render_template, session, redirect, url_for, escape, request, make_response, flash
 import forms
-#from flask_wtf.csrf import CSRFProtect
+#from flask_wtf import CSRFProtect
 #from flask_mysqldb import MySQL
 
 # Initialization
 app = Flask(__name__)
-
 # Settings sessions memory app
 app.secret_key = "my_secret_key"
 #csrf = CSRFProtect(app)
@@ -20,21 +19,45 @@ app.secret_key = "my_secret_key"
 # ROUTER
 @app.route("/")
 def halo():
-    comment_form = forms.RegisterUser()
-    return render_template('index.html', form = comment_form)
+    if 'username' in session:
+        username = session['username']
+        print (username)
+    #custome_cookie = request.cookies.get('custome_cookie', 'Undefined')
+    #print(custome_cookie)
+    return render_template('index.html')
+
+
+@app.errorhandler(404)
+def notfound(e):
+    return render_template('404.html'), 404
+
+@app.route("/cookie")
+def cookie():
+    response = make_response(render_template('cookie.html'))
+    response.set_cookie('custome_cookie', 'Eduardo')
+    return response
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login(title='parrafotest'):
     login_form = forms.LoginUser(request.form)
 
-    if request.method == 'POST':
-        print (login_form.username.data)
-        print (login_form.email.data)
-        print(login_form.password.data)
+    if request.method == 'POST' and login_form.validate():
+        username = login_form.username.data
+        sucess_message = 'Bienvenido {}'.format(username)
+        flash(sucess_message)
+
+        session['username'] = login_form.username.data
+
 
     return render_template('login.html', title=title, form = login_form)
 
+
+@app.route('/logout')
+def logout():
+    if 'username' in session:
+        session.pop('username')
+    return redirect(url_for('login'))
 
 #http://127.0.0.1:9000/params?params1=Eduardo&params2=Pepe
 @app.route("/params/")
@@ -44,7 +67,7 @@ def params(user = "no hay valor", id = "no"):
     return "El parametro es: {} {} ".format(user, id)
 #/params?params1=32&params2=43
 
-@app.route("/register")
+@app.route("/register", methods = ['GET', 'POST'])
 def register():
     register_user = forms.RegisterUser()
     return render_template('register.html', form=register_user)
