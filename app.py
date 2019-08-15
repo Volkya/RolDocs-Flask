@@ -1,13 +1,13 @@
-from flask import Flask, render_template, session, redirect, url_for, escape, request, make_response, flash
+from flask import Flask, json, render_template, session, redirect, url_for, escape, request, make_response, flash
 import forms
-#from flask_wtf import CSRFProtect
+from flask_wtf import CSRFProtect
 #from flask_mysqldb import MySQL
 
 # Initialization
 app = Flask(__name__)
 # Settings sessions memory app
 app.secret_key = "my_secret_key"
-#csrf = CSRFProtect(app)
+csrf = CSRFProtect(app)
 
 
 # Database
@@ -30,6 +30,13 @@ def halo():
 @app.errorhandler(404)
 def notfound(e):
     return render_template('404.html'), 404
+
+@app.route('/ajax-login', methods=['POST'])
+def ajax_login():
+    print (request.form)
+    username = request.form['username']
+    response = { 'status':200, 'username': username, 'id': 1}
+    return json.dumps(response)
 
 @app.route("/cookie")
 def cookie():
