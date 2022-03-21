@@ -1,13 +1,13 @@
 This is my first CRUD using Flask from Python
 
-Im not use a ORM, this create query in the database.
+Im not use an ORM, this create query in the database.
 
-# Create database with docker
+#Stack
 
-`docker run --name rolDocs -d -p 3319:3306 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=rolDocs mariadb`
+| Language | Backend | Fronted | Database | Platform | Author |
+| -------- | -------- |--------|--------|--------|--------|
+| Python 3.8 | Flask | Jinga2 | MySQL | Machine | Volkya |
 
-#Dependencies
+# Init database
 
-- Python 
-- flask 
-- mysql
+`docker run --name wordsApp -d -p 3319:3306 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=wordsApp mariadb`
